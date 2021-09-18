@@ -4,12 +4,14 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Code created, edited, and updated by Teddy Jr. L. Mirote -->
+    <!-- My github link: https://github.com/teddyjr-2603 -->
     <title>Digital Clock UI</title>
     <style>
         :root {
-            --websiteBackground: #23accc;
-            --timeFontSize: 20vh;
-            --clockFontColor: white;
+            --websiteBackground: #23accc; /* Sets the background of the webpage. This can be a color value or an image */
+            --timeFontSize: 20vh; /* Sets the font size of the main clock */
+            --clockFontColor: white; /* Sets the color of the Digital Clock UI */
         }
         * {
             margin: 0;
@@ -47,6 +49,7 @@
         .date {
             font-size: calc(var(--timeFontSize) - 13vh);
         }
+        /* Following lines are reserved for importing custom fonts or font-faces */
         @font-face {
             font-family: "Digital Dismay";
             src: url("fonts/Digital\ Dismay.otf");
@@ -61,14 +64,15 @@
     <div class="digitalClock">
         <table>
             <tr>
-                <td class="time" id="time">00 : 00 : 00</td>
-                <td class="meridiem" id="meridiem">AM</td>
+                <td class="time" id="time">00 : 00 : 00</td> <!-- The text inside is just a template -->
+                <td class="meridiem" id="meridiem">AM</td> <!-- The text inside is just a template -->
             </tr>
             <tr>
-                <td colspan="2" class="date" id="date">SUNDAY - SEPTEMBER 19, 2021</td>
+                <td colspan="2" class="date" id="date">SUNDAY - SEPTEMBER 19, 2021</td> <!-- The text inside is just a template -->
             </tr>
         </table>
     </div>
+    <!-- Following lines are reserved for the scripting of the clock -->
     <script>
         function showTime() {
             const time = document.querySelector("#time");
@@ -83,13 +87,13 @@
             let dt = date.getDate();        // 1 - 31 (Gets the accurate date)
             let year = date.getFullYear();  // Gets the accurate year
 
-            hour = (hour < 10) ? "0" + hour : hour;
-            min = (min < 10) ? "0" + min : min;
-            sec = (sec < 10) ? "0" + sec : sec;
+            hour = (hour < 10) ? "0" + hour : hour; // Adds "0" to the number if it's a single number
+            min = (min < 10) ? "0" + min : min; // Adds "0" to the number if it's a single number
+            sec = (sec < 10) ? "0" + sec : sec; // Adds "0" to the number if it's a single number
 
             if (hour > 12) {
-                hour = hour - 12;
-                meridiem.innerHTML = "PM";
+                hour = hour - 12; // This sets the clock in 12-hour format
+                meridiem.innerHTML = "PM"; 
                 meridiem.textContent = "PM";
             }
 
@@ -117,7 +121,6 @@
             time.innerHTML = hour + " : " + min + " : " + sec;
             time.textContent = hour + " : " + min + " : " + sec;
 
-            
 
             dates.innerHTML = day + " - " + month + " " + dt + ", " + year;
             dates.textContent = day + " - " + month + " " + dt + ", " + year;
