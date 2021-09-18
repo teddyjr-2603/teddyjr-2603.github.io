@@ -5,8 +5,126 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Digital Clock UI</title>
+    <style>
+        :root {
+            --websiteBackground: #23accc;
+            --timeFontSize: 18vh;
+            --clockFontColor: white;
+        }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background: var(--websiteBackground);
+        }
+        .digitalClock {
+            color: var(--clockFontColor);
+            text-shadow: 0 0 0.25vh black,
+                         0 0 0.5vh black,
+                         0 0 0.75vh black;
+        }
+        table tr td {
+            text-align: center;
+            vertical-align: middle;
+        }
+        .time {
+            font-family: "Digital Dismay";
+            font-size: var(--timeFontSize);
+        }
+        .meridiem, .date {
+            font-family: "Radioland";
+        }
+        .meridiem {
+            font-size: calc(var(--timeFontSize) - 10vh);
+            padding-left: 3vh;
+        }
+        .date {
+            font-size: calc(var(--timeFontSize) - 13vh);
+        }
+        @font-face {
+            font-family: "Digital Dismay";
+            src: url("fonts/Digital\ Dismay.otf");
+        }
+        @font-face {
+            font-family: "Radioland";
+            src: url("fonts/RADIOLAND.TTF");
+        }
+    </style>
 </head>
 <body>
-    
+    <div class="digitalClock">
+        <table>
+            <tr>
+                <td class="time" id="time">00 : 00 : 00</td>
+                <td class="meridiem" id="meridiem">AM</td>
+            </tr>
+            <tr>
+                <td colspan="2" class="date" id="date">SUNDAY - SEPTEMBER 19, 2021</td>
+            </tr>
+        </table>
+    </div>
+    <script>
+        function showTime() {
+            const time = document.querySelector("#time");
+            const meridiem = document.querySelector("#meridiem");
+            const dates = document.querySelector("#date");
+            let date = new Date();
+            let hour = date.getHours();     // 0 - 23
+            let min = date.getMinutes();    // 0 - 59
+            let sec = date.getSeconds();    // 0 - 59
+            let day = date.getDay();        // 0 - 6
+            let month = date.getMonth();    // 0 - 11
+            let dt = date.getDate();        // 1 - 31 (Gets the accurate date)
+            let year = date.getFullYear();  // Gets the accurate year
+
+            hour = (hour < 10) ? "0" + hour : hour;
+            min = (min < 10) ? "0" + min : min;
+            sec = (sec < 10) ? "0" + sec : sec;
+
+            if (hour > 12) {
+                hour = hour - 12;
+                meridiem.innerHTML = "PM";
+                meridiem.textContent = "PM";
+            }
+
+            day = (day == 0) ? "SUNDAY" : day;
+            day = (day == 1) ? "MONDAY" : day;
+            day = (day == 2) ? "TUESDAY" : day;
+            day = (day == 3) ? "WEDNESDAY" : day;
+            day = (day == 4) ? "THURSDAY" : day;
+            day = (day == 5) ? "FRIDAY" : day;
+            day = (day == 6) ? "SATURDAY" : day;
+
+            month = (month == 0) ? "JANUARY" : month;
+            month = (month == 1) ? "FEBRUARY" : month;
+            month = (month == 2) ? "MARCH" : month;
+            month = (month == 3) ? "APRIL" : month;
+            month = (month == 4) ? "MAY" : month;
+            month = (month == 5) ? "JUNE" : month;
+            month = (month == 6) ? "JULY" : month;
+            month = (month == 7) ? "AUGUST" : month;
+            month = (month == 8) ? "SEPTEMBER" : month;
+            month = (month == 9) ? "OCTOBER" : month;
+            month = (month == 10) ? "NOVEMBER" : month;
+            month = (month == 11) ? "DECEMBER" : month;
+
+            time.innerHTML = hour + " : " + min + " : " + sec;
+            time.textContent = hour + " : " + min + " : " + sec;
+
+            
+
+            dates.innerHTML = day + " - " + month + " " + dt + ", " + year;
+            dates.textContent = day + " - " + month + " " + dt + ", " + year;
+
+            setTimeout(showTime, 500)
+        }
+        showTime();
+    </script>
 </body>
 </html>
