@@ -87,8 +87,8 @@
             let dt = date.getDate();        // 1 - 31 (Gets the accurate date)
             let year = date.getFullYear();  // Gets the accurate year
 
-            hour = (hour == 0) ? "12" : hour; 
-            hour = (hour < 12) ? "0" + hour : hour;
+            hour = (hour == 0) ? "12" : hour; // Sets the time to "12" instead of 0 to display a true 12-hour format clock
+            hour = (hour < 12) ? "0" + hour : hour; // Adds "0" to the number if it's a single number
             min = (min < 10) ? "0" + min : min; // Adds "0" to the number if it's a single number
             sec = (sec < 10) ? "0" + sec : sec; // Adds "0" to the number if it's a single number
 
