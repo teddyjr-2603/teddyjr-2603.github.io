@@ -93,7 +93,7 @@
             sec = (sec < 10) ? "0" + sec : sec; // Adds "0" to the number if it's a single number
 
             if (hour > 12) {
-                hour = hour - 12; // This sets the clock in 12-hour format
+                hour = hour - 12; // Subtracting 12 if the hour is greater than 12. Example: 13 - 12 = 1
                 meridiem.innerHTML = "PM"; 
                 meridiem.textContent = "PM";
                 hour = "0" + hour;
