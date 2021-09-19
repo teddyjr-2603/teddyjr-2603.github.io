@@ -87,7 +87,6 @@
             let dt = date.getDate();        // 1 - 31 (Gets the accurate date)
             let year = date.getFullYear();  // Gets the accurate year
 
-            hour = (hour < 10) ? "0" + hour : hour; // Adds "0" to the number if it's a single number
             min = (min < 10) ? "0" + min : min; // Adds "0" to the number if it's a single number
             sec = (sec < 10) ? "0" + sec : sec; // Adds "0" to the number if it's a single number
 
@@ -95,6 +94,7 @@
                 hour = hour - 12; // This sets the clock in 12-hour format
                 meridiem.innerHTML = "PM"; 
                 meridiem.textContent = "PM";
+                hour = "0" + hour;
             }
 
             day = (day == 0) ? "SUNDAY" : day;
